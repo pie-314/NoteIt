@@ -28,12 +28,10 @@ fn App() -> Element {
     
     let mut selected_id = use_signal(|| "1".to_string());
     let mut new_title = use_signal(|| "".to_string());
-    
-    // Simple function to add a note
+
     let mut add_note = move || {
         let title = new_title.read().clone();
         if title.len() > 0 {
-            // Just use current time as ID
             let id = format!("{}", js_sys::Date::now() as u64);
             let note = Note {
                 id: id.clone(),
@@ -46,30 +44,25 @@ fn App() -> Element {
         }
     };
     
-    // Delete the current note
     let mut delete_note = move || {
         let id = selected_id.read().clone();
         notes.write().remove(&id);
-        // Just select the first note we can find
         if let Some(first_id) = notes.read().keys().next() {
             selected_id.set(first_id.clone());
         }
     };
     
-    // Get the current note
     let current_note = notes.read().get(&selected_id.read().clone()).cloned();
     
     rsx! {
         div {
             style: "display: flex; height: 100vh; font-family: Arial;",
             
-            // Left sidebar
             div {
                 style: "width: 300px; background: #f0f0f0; padding: 10px;",
                 
-                h1 { "My Notes" }
+                h1 { "NoteIt }
                 
-                // Add new note section
                 div {
                     style: "margin-bottom: 20px;",
                     input {
@@ -86,7 +79,6 @@ fn App() -> Element {
                     }
                 }
                 
-                // List of notes
                 div {
                     for (id, note) in notes.read().iter() {
                         div {
