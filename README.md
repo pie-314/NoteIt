@@ -1,25 +1,26 @@
-# Development
+# My Note App
 
-Your new bare-bones project includes minimal organization with a single `main.rs` file and a few assets.
+A simple note-taking app built with Rust and Dioxus. I made this to learn web development with Rust!
 
-```
-project/
-├─ assets/ # Any assets that are used by the app should be placed here
-├─ src/
-│  ├─ main.rs # main.rs is the entry point to your application and currently contains all components for the app
-├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
-```
+## Screenshot
 
-### Serving Your App
+![App Screenshot](screenshot.png)
 
-Run the following command in the root of your project to start developing with the default platform:
+## What it does
+
+- Create new notes with titles
+- Edit note titles and content
+- Delete notes you don't need
+- Click on notes in the sidebar to switch between them
+- Auto-saves as you type
+
+## How to run
+
+Make sure you have Rust installed, then:
 
 ```bash
-dx serve
-```
+# Clone or download this project
+cd note-app
 
-To run for a different platform, use the `--platform platform` flag. E.g.
-```bash
-dx serve --platform desktop
-```
-
+# Install dependencies and run
+cargo run
